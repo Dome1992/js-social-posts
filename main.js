@@ -55,3 +55,27 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Seleziona tutti gli elementi dal DOM con la classe js-like-button
+    const likeButtons = document.querySelectorAll('.js-like-button');
+
+    // Per ogni pulsante "Mi Piace"
+    likeButtons.forEach(function (likeButton) {
+        // Inizializza il contatore dei like per ciascun post
+        let count = parseInt(likeButton.closest('.js-likes').querySelector('.js-likes-counter').textContent);
+
+        // Aggiungi un listener per il clic sul bottone "Mi Piace"
+        likeButton.addEventListener('click', function () {
+            // Aumenta il conteggio dei like per il post corrente
+            count++;
+
+            // Aggiorna il testo del conteggio dei like
+            likeButton.closest('.js-likes').querySelector('.js-likes-counter').textContent = `Piace a ${count} persone`;
+
+            // Puoi anche fare altre azioni qui, ad esempio inviare una richiesta al server.
+        });
+    });
+});
+
